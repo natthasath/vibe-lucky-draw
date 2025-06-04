@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lucky Draw Wheel - วงล้อจับฉลาก</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <!-- Input Section -->
+            <div class="input-section">
+                <h3>🎯 เพิ่มผู้เข้าร่วม</h3>
+                <input type="text" id="nameInput" class="name-input" placeholder="ชื่อ-นามสกุล" maxlength="50">
+                <button class="btn btn-primary" onclick="addParticipant()">เพิ่มชื่อ</button>
+                <button class="btn btn-danger" onclick="clearAll()">ลบทั้งหมด</button>
+            </div>
+
+            <!-- Winners Section -->
+            <div class="winners-section">
+                <h3>🏆 ผู้ได้รับรางวัล</h3>
+                <div id="winnersList">
+                    <div style="text-align: center; color: #6c757d; font-style: italic;">
+                        ยังไม่มีผู้ชนะ
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="main-section">
+            <h1 style="color: #333; margin-bottom: 20px;">🎲 วงล้อจับฉลากผู้โชคดี</h1>
+            
+            <div class="participant-count" id="participantCount">
+                ผู้เข้าร่วม: 0 คน
+            </div>
+
+            <div class="wheel-container">
+                <div class="pointer"></div>
+                <div class="wheel" id="wheel">
+                    <div class="no-participants">
+                        <div>🎪</div>
+                        <div>เพิ่มชื่อผู้เข้าร่วมเพื่อเริ่มเล่น</div>
+                    </div>
+                </div>
+            </div>
+
+            <button class="spin-button" id="spinButton" onclick="spinWheel()" disabled>
+                🎯 หมุนวงล้อ
+            </button>
+        </div>
+    </div>
+
+    <!-- Winner Announcement Modal -->
+    <div class="overlay" id="overlay"></div>
+    <div class="winner-announcement" id="winnerModal">
+        <h2>🎉 ยินดีด้วย!</h2>
+        <div class="winner-name" id="winnerName"></div>
+        <button class="btn btn-primary" onclick="closeWinnerModal()">ปิด</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

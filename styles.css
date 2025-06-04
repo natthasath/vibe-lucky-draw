@@ -1,0 +1,421 @@
+/* Lucky Draw Wheel - CSS Styles */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 30px;
+    max-width: 1200px;
+    width: 100%;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    padding: 30px;
+}
+
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.input-section {
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 15px;
+    border: 2px solid #e9ecef;
+}
+
+.input-section h3 {
+    color: #495057;
+    margin-bottom: 15px;
+    font-size: 18px;
+}
+
+.name-input {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #dee2e6;
+    border-radius: 8px;
+    font-size: 16px;
+    margin-bottom: 10px;
+    transition: border-color 0.3s;
+}
+
+.name-input:focus {
+    outline: none;
+    border-color: #667eea;
+}
+
+.btn {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    width: 100%;
+}
+
+.btn-primary {
+    background: #667eea;
+    color: white;
+}
+
+.btn-primary:hover {
+    background: #5a67d8;
+    transform: translateY(-2px);
+}
+
+.btn-danger {
+    background: #e53e3e;
+    color: white;
+    margin-top: 10px;
+}
+
+.btn-danger:hover {
+    background: #c53030;
+}
+
+.winners-section {
+    background: #e8f5e8;
+    padding: 20px;
+    border-radius: 15px;
+    border: 2px solid #c6f6d5;
+}
+
+.winners-section h3 {
+    color: #2d5016;
+    margin-bottom: 15px;
+    font-size: 18px;
+}
+
+.winner-item {
+    background: white;
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 8px;
+    border-left: 4px solid #38a169;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.winner-number {
+    background: #38a169;
+    color: white;
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.main-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    padding: 20px;
+}
+
+.wheel-container {
+    position: relative;
+    width: 450px;
+    height: 450px;
+    filter: drop-shadow(0 10px 30px rgba(0,0,0,0.3));
+}
+
+.wheel {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    position: relative;
+    overflow: hidden;
+    transition: transform 4s cubic-bezier(0.23, 1, 0.32, 1);
+    background: linear-gradient(45deg, #f0f0f0, #e0e0e0);
+    border: 8px solid #2c3e50;
+    box-shadow: 
+        inset 0 0 0 8px #34495e,
+        inset 0 0 0 12px #ecf0f1,
+        0 0 0 2px #bdc3c7;
+}
+
+.wheel-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(145deg, #3498db, #2980b9);
+    border-radius: 50%;
+    z-index: 100;
+    box-shadow: 
+        0 4px 8px rgba(0,0,0,0.3),
+        inset 0 2px 4px rgba(255,255,255,0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    color: white;
+    font-weight: bold;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+}
+
+.wheel svg {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.wheel-segment {
+    stroke: #2c3e50;
+    stroke-width: 2;
+    cursor: default;
+    transition: all 0.3s ease;
+}
+
+.wheel-segment:hover {
+    filter: brightness(1.1);
+    transform: scale(1.02);
+    transform-origin: center;
+}
+
+.segment-text {
+    font-family: 'Segoe UI', sans-serif;
+    font-weight: bold;
+    font-size: 14px;
+    fill: white;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
+    text-anchor: middle;
+    dominant-baseline: middle;
+    pointer-events: none;
+}
+
+.pointer {
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-top: 40px solid #e74c3c;
+    z-index: 150;
+    filter: drop-shadow(0 3px 6px rgba(0,0,0,0.3));
+}
+
+.pointer::after {
+    content: '';
+    position: absolute;
+    top: -35px;
+    left: -15px;
+    width: 0;
+    height: 0;
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    border-top: 30px solid #c0392b;
+}
+
+.participant-count {
+    background: #667eea;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 25px;
+    font-weight: bold;
+}
+
+.no-participants {
+    text-align: center;
+    color: #6c757d;
+    font-style: italic;
+    padding: 40px;
+}
+
+.winner-announcement {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    text-align: center;
+    z-index: 1000;
+    display: none;
+}
+
+.winner-announcement.show {
+    display: block;
+    animation: bounceIn 0.6s;
+}
+
+.winner-announcement h2 {
+    color: #ff6b6b;
+    margin-bottom: 20px;
+    font-size: 28px;
+}
+
+.winner-name {
+    font-size: 32px;
+    font-weight: bold;
+    color: #333;
+    margin: 20px 0;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    z-index: 999;
+    display: none;
+}
+
+.overlay.show {
+    display: block;
+}
+
+@keyframes bounceIn {
+    0% { transform: translate(-50%, -50%) scale(0.3); }
+    50% { transform: translate(-50%, -50%) scale(1.05); }
+    70% { transform: translate(-50%, -50%) scale(0.9); }
+    100% { transform: translate(-50%, -50%) scale(1); }
+}
+
+.spin-button {
+    padding: 15px 40px;
+    font-size: 20px;
+    font-weight: bold;
+    background: linear-gradient(45deg, #e74c3c, #c0392b);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s;
+    box-shadow: 0 4px 15px rgba(231, 76, 60, 0.4);
+    position: relative;
+    overflow: hidden;
+}
+
+.spin-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    transition: left 0.5s;
+}
+
+.spin-button:hover:not(:disabled)::before {
+    left: 100%;
+}
+
+.spin-button:hover:not(:disabled) {
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(231, 76, 60, 0.6);
+}
+
+.spin-button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.wheel.spinning {
+    animation: wheelGlow 0.5s ease-in-out infinite alternate;
+}
+
+@keyframes wheelGlow {
+    from {
+        box-shadow: 
+            inset 0 0 0 8px #34495e,
+            inset 0 0 0 12px #ecf0f1,
+            0 0 0 2px #bdc3c7,
+            0 0 20px rgba(52, 152, 219, 0.5);
+    }
+    to {
+        box-shadow: 
+            inset 0 0 0 8px #34495e,
+            inset 0 0 0 12px #ecf0f1,
+            0 0 0 2px #bdc3c7,
+            0 0 30px rgba(52, 152, 219, 0.8);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        padding: 15px;
+    }
+    
+    .wheel-container {
+        width: 350px;
+        height: 350px;
+    }
+
+    .wheel-center {
+        width: 60px;
+        height: 60px;
+        font-size: 20px;
+    }
+
+    .segment-text {
+        font-size: 12px;
+    }
+
+    .main-section h1 {
+        font-size: 24px;
+    }
+}
+
+@media (max-width: 480px) {
+    .wheel-container {
+        width: 280px;
+        height: 280px;
+    }
+
+    .wheel-center {
+        width: 50px;
+        height: 50px;
+        font-size: 18px;
+    }
+
+    .segment-text {
+        font-size: 10px;
+    }
+
+    .spin-button {
+        padding: 12px 30px;
+        font-size: 18px;
+    }
+}
