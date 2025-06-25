@@ -1,3 +1,3 @@
 # Vibe Lucky Draw
 
-Join our Lucky Draw for a chance to win exciting prizes! Enter now and you could be one of the lucky winners. Don’t miss out—your next big win might be just a draw away!
+Vibe Lucky Draw is a fun, interactive tool for random prize draws, raffles, and giveaways. Customize entries, spin for winners, and create engaging experiences for events, meetings, or team activities with a simple, lively interface.Vibe Lucky Draw is a fun, interactive tool for random prize draws, raffles, and giveaways. Customize entries, spin for winners, and create engaging experiences for events, meetings, or team activities with a simple, lively interface.
